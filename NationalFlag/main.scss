@@ -1,0 +1,165 @@
+// ref: https://en.wikipedia.org/wiki/Flag_of_China
+$flag-color: #de2910;
+$star-color: #ffde00;
+$help-color: #4affff;
+$width: 96em;
+$height: $width * 2/3;
+$tan36deg: 0.72; // tan(36deg)约等于0.726542528 高/底边
+$big-star: $width/32 * 3;
+$small-star: $width/32;
+section {
+  // 将基准字体大小设为10px
+  // 统一采用em作为字体单位，2.4em就表示24px
+  font-size: 10px;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  .flag {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    background-color: $flag-color;
+    width: $width;
+    height: $height;
+    z-index: 1;
+  }
+  .star {
+    // 黄金三角形
+    &,
+    &::before,
+    &::after {
+      width: 0;
+      height: 0;
+      position: absolute;
+      display: block;
+    }
+    &::before {
+      content: "";
+      transform: rotate(-72deg);
+    }
+    &::after {
+      content: "";
+      transform: rotate(72deg);
+    }
+  }
+  .star-large {
+    top: $height/5;
+    left: $width/13.8;
+    &,
+    &::before,
+    &::after {
+      // 黄金三角形顶角36度
+      border-left: $big-star solid transparent; //
+      border-right: $big-star solid transparent; //底边
+      border-top: $big-star * $tan36deg solid $star-color; //高
+      transform-origin: $big-star $big-star * $tan36deg/2.2; //这里要除以2.2以消除误差
+    }
+
+    &::before,
+    &::after {
+      left: -$big-star;
+      top: -$big-star * $tan36deg;
+    }
+  }
+
+  .star-small {
+    &:nth-child(2) {
+      top: $height/12;
+      left: $width/3.31;
+      transform: rotate(23.5deg);
+    }
+    &:nth-child(3) {
+      top: $height/5.5;
+      left: $width/2.712;
+      transform: rotate(-26deg);
+    }
+    &:nth-child(4) {
+      top: $height/3;
+      left: $width/2.712;
+    }
+    &:nth-child(5) {
+      top: $height/2.3;
+      left: $width/3.31;
+      transform: rotate(21.5deg);
+    }
+    &,
+    &::before,
+    &::after {
+      border-left: $small-star solid transparent; //
+      border-right: $small-star solid transparent; //底边
+      border-top: $small-star * $tan36deg solid $star-color; //高
+      transform-origin: $small-star $small-star * $tan36deg/2.2; //这里要除以2.2以消除误差
+    }
+
+    &::before,
+    &::after {
+      left: -$small-star;
+      top: -$small-star * $tan36deg;
+    }
+  }
+}
+
+.hide {
+  display: none;
+}
+.help-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $width;
+  height: $height;
+  z-index: 1;
+  * {
+    box-sizing: border-box;
+  }
+  & > div {
+    position: absolute;
+    outline: 0.5px solid $help-color;
+    width: $width/2;
+    height: $height/2;
+
+    &:nth-child(1) {
+      top: 0;
+      left: 0;
+      & > div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: $width/2;
+        height: $height/2;
+        &:nth-child(1) {
+          p {
+            padding: 0;
+            margin: 0;
+            border-top: 0.5px solid $help-color;
+            border-bottom: 0.5px solid $help-color;
+            height: $height/20;
+            margin-bottom: $height/20;
+          }
+        }
+        &:nth-child(2) {
+          p {
+            padding: 0;
+            margin: 0;
+            float: left;
+            border-right: 0.5px solid $help-color;
+            width: $width/30;
+            height: $height/2;
+          }
+        }
+      }
+    }
+    &:nth-child(2) {
+      top: 0;
+      left: $width/2;
+    }
+    &:nth-child(3) {
+      top: $height/2;
+      left: 0;
+    }
+    &:nth-child(4) {
+      top: $height/2;
+      left: $width/2;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中华人民共和国国旗</title>
+  <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+  <header>
+    <h1>五星红旗</h1>
+    <button onclick="toggleHelpLines()">显示/隐藏参考线</button>
+  </header>
+  <section>
+    <div class="flag" title="五星红旗">
+      <span class="star star-large"></span>
+      <span class="star star-small"></span>
+      <span class="star star-small"></span>
+      <span class="star star-small"></span>
+      <span class="star star-small"></span>
+    </div>
+    <div class="help-line">
+      <div>
+        <div>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+        </div>
+        <div>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+        </div>
+      </div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </section>
+  <script> 
+  function toggleHelpLines(){
+    document.querySelector('.help-line').classList.toggle('hide')
+  }
+  </script>
+</body>
+
+</html>
